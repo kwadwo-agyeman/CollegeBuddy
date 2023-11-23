@@ -6,21 +6,45 @@ import { Stack } from "@mui/material";
 
 function Profile() {
   const [cardArr, setCardArr] = React.useState([1]);
-  const [cardDetails, setDetails] = React.useState([{ title: "", description: " " }]);
+  const [cardDetails, setDetails] = React.useState([
+    { title: "", description: "" },
+  ]);
   const [title, setTitle] = React.useState([false]);
   const [description, setDescription] = React.useState([false]);
+const [check,setCheck] = React.useState()
+  // Load data from Local Storage on component mount
+  useEffect(() => {
+    setupCardsArr();
+  }, [check]);
+
+  const setupCardsArr = () => {
+    const storedCardArr = getCardsArr();
+    localStorage.setItem("storedCardArr", JSON.stringify(storedCardArr));
+    setCardArr(storedCardArr);
+  };
+
+  const getCardsArr = () => {
+    return localStorage.getItem("storedCardArr")
+      ? JSON.parse(localStorage.getItem("storedCardArr"))
+      : cardArr;
+  };
 
   const addCard = () => {
     setCardArr((prevCardArr) => [...prevCardArr, prevCardArr.length + 1]);
-    setDetails((prevDetails) => [...prevDetails, { title: "", description: " " }]);
+    setDetails((prevDetails) => [
+      ...prevDetails,
+      { title: "", description: "" },
+    ]);
     setTitle((prevTitle) => [...prevTitle, false]);
     setDescription((prevDescription) => [...prevDescription, false]);
+    setCheck(!check)
   };
-
   const deleteCard = (index) => {
     const updatedCardArr = [...cardArr];
     updatedCardArr.splice(index, 1);
     setCardArr(updatedCardArr);
+
+    // Update Local Storage after deleting a card
   };
 
   const handleCardEdits = (e, index) => {
@@ -38,6 +62,9 @@ function Profile() {
       newTitleStat[index] = !newTitleStat[index];
       return newTitleStat;
     });
+
+    // Update Local Storage after changing title status
+    updateLocalStorage();
   };
 
   const handleDescriptionStatus = (index) => {
@@ -47,7 +74,6 @@ function Profile() {
       return newDescriptionStat;
     });
   };
-
 
   return (
     <div>

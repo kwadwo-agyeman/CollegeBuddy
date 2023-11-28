@@ -15,10 +15,18 @@ import Profile from "@mui/icons-material/Person";
 import Help from "@mui/icons-material/HelpOutline";
 import { Link } from "react-router-dom";
 import React from "react";
+import {styled} from "@mui/material";
+
+const StyledBox = styled(Box)(({theme})=>({
+  display: "none",
+  [theme.breakpoints.up("sm")]:{
+    display: "block"
+  }
+}))
 
 function Sidebar(props) {
   return (
-    <Box flex={1.5} p={3}>
+    <StyledBox flex={1.5} p={3}>
       <Box
         position="fixed"
         sx={{
@@ -88,7 +96,7 @@ function Sidebar(props) {
           </ListItem>
         </List>
       </Box>
-    </Box>
+    </StyledBox>
   );
 }
 

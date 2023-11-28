@@ -20,7 +20,7 @@ import FinAid from "@mui/icons-material/MonetizationOn";
 import BookIcon from "@mui/icons-material/Book";
 
 const StyledContainer = styled(Container)({
-  background: "#ffef00",
+  background: "",
   marginTop: 50,
   marginBottom: 50,
   padding: "10px 0",
@@ -35,10 +35,10 @@ function Aims() {
     <StyledContainer sx={{}}>
       <CssBaseline />
       <Typography
-        variant="h3"
+        variant="h4"
         sx={{
           textAlign: "center",
-          color: "white",
+          color: "#5FE88D",
           fontWeight: 600
         }}
       >
@@ -51,13 +51,13 @@ function Aims() {
               <Card
                 sx={{
                   boxShadow: "1rem 1rem 2rem rgb(0,0,0,0.1)",
-                  background: "rgb(225,225,225,0.6)",
+                  background: "#7FC8F8",
                 }}
               >
                 <CardContent>
                   <Box
                     sx={{
-                      background: "rgb(225,225,225)",
+                      background: "white",
                       width: "50px",
                       height: "50px",
                       borderRadius: "50%",
@@ -74,13 +74,13 @@ function Aims() {
                   <Typography
                     gutterBottom
                     variant="h6"
-                    sx={{ textAlign: "center" }}
+                    sx={{ textAlign: "center", color:"white",fontWeight: 600 }}
                   >
                     {card.heading}
                   </Typography>
                   <Typography
                     sx={{
-                      background: "green",
+                      background: "#5AA9E6",
                       color: "white",
                       p: 3,
                       borderRadius: 5,

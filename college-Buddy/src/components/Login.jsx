@@ -30,7 +30,7 @@ function Login() {
   },[correctLogins])
   const navToProfile = () => {
     if (username === "CollegeBud23" && password === "2023@college") {
-      setLogins("/profile");
+      setLogins("/activitiesPage");
     } else {
       console.log("wrong logins");
     }
@@ -42,6 +42,7 @@ function Login() {
         <Box flex={{ xs: 12, sm: 6 }} sx={{ width: { xs: "80%", sm: "50%" } }}>
           <Typography
             variant="h4"
+            color="primary"
             sx={{
               fontSize: { xs: "50", sm: "100" },
               textAlign: { xs: "center", sm: "center", fontWeight: "bold" },
@@ -78,20 +79,35 @@ function Login() {
           <br />
           <br />
           
-            <Link to={correctLogins}>
+          <div style={{display: "flex",justifyContent: "space-around"}}>
+          <Link to={correctLogins}>
               <Button
                 variant="contained"
                 onClick={navToProfile}
                 sx={{
-                  marginLeft: "34%",
                   backgroundColor: "#5FE88D",
                   "&:hover": { backgroundColor: "green" },
                 }}
               >
-                Login
+                Sign In
               </Button>
             </Link>
           
+            <Link to="/signup">
+              <Button
+                variant="contained"
+                onClick={navToProfile}
+                sx={{
+                  backgroundColor: "#5FE88D",
+                  "&:hover": { backgroundColor: "green" },
+                }}
+              >
+                Sign Up
+              </Button>
+            </Link>
+
+          </div>
+
           <Divider sx={{ mt: 3 }}>
             <Typography>Login With</Typography>
           </Divider>

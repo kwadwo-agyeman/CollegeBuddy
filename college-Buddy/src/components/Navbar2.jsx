@@ -15,7 +15,7 @@ import {
 import { styled } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
 import SearchIcon from "@mui/icons-material/Search";
-import DarkModeIcon from "@mui/icons-material/DarkMode"; //styled components
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { Link } from "react-router-dom";
 const StyledToolbar = styled(Toolbar)({
   background: "#5FE88D",
@@ -45,8 +45,9 @@ const StyledStack = styled(Stack)(({ theme }) => ({
   },
 }));
 
-const StyledTooltip = styled(Tooltip)(({ theme }) => ({
-  display: "block",
+const StyledBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems:"center",
   [theme.breakpoints.up("sm")]: {
     display: "none",
   },
@@ -99,20 +100,24 @@ function Navbar2(props) {
             </Link>
           </Tooltip>
         </StyledStack>
-        <StyledTooltip title="profile/login">
-          <Link to="/profile">
-            <IconButton
-              sx={{ bgcolor: "rgb(225,225,225,0.6)", color: "palevioletred" }}
-            >
-              <Avatar
-                alt="Remy Sharp"
-                src={props.profPic}
-                sx={{ width: 25, height: 25 }}
-              />
-            </IconButton>
-          </Link>
-        </StyledTooltip>
+        <StyledBox>
+        <ListIcon />
+          <Tooltip title="profile/login">
+            <Link to="/profile">
+              <IconButton
+                sx={{ bgcolor: "rgb(225,225,225,0.6)", color: "palevioletred" }}
+              >
+                <Avatar
+                  alt="Remy Sharp"
+                  src={props.profPic}
+                  sx={{ width: 25, height: 25 }}
+                />
+              </IconButton>
+            </Link>
+          </Tooltip>
+        </StyledBox>
       </StyledToolbar>
+
     </AppBar>
   );
 }

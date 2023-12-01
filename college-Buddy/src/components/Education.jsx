@@ -134,7 +134,10 @@ function Education() {
               color: "purple",
               position:"absolute",
               right:"5%",
-              bottom:"5%"
+              bottom:"5%",
+              "&:hover":{
+                cursor:"pointer"
+            }
             }}
           />
         </CardContent>

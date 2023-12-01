@@ -1,4 +1,5 @@
 import React from "react";
+import { Menu } from "@mui/icons-material";
 
 import {
   AppBar,
@@ -101,7 +102,6 @@ function Navbar2(props) {
           </Tooltip>
         </StyledStack>
         <StyledBox>
-        <ListIcon />
           <Tooltip title="profile/login">
             <Link to="/profile">
               <IconButton

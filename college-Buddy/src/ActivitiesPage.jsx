@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Navbar from "./components/Navbar";
+import Navbar2 from "./components/Navbar2";
 import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
 import ActivityCards from "./components/ActivityCards";
 import { Stack } from "@mui/material";
 
@@ -155,8 +156,8 @@ function Profile() {
 
   return (
     <div>
-      <Navbar />
-      <Stack direction="row" spacing={{ xs: 0, sm: 2 }}>
+      <Navbar2 />
+      <Stack direction="row" spacing={{xs: 1.4, sm: 2}}>
         <Sidebar addCard={addCard} />
         <ActivityCards
           cardArr={cardArr}
@@ -176,6 +177,7 @@ function Profile() {
           modalStates={modalStates}
         />
       </Stack>
+      <Footer/>
     </div>
   );
 }

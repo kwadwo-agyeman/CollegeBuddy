@@ -52,9 +52,10 @@ function Aims() {
                 sx={{
                   boxShadow: "1rem 1rem 2rem rgb(0,0,0,0.1)",
                   background: "#7FC8F8",
+                  height:{xs:"40vh",sm:"40vh",md:"65vh"}
                 }}
               >
-                <CardContent>
+                <CardContent sx={{display:"flex",flexDirection:"column",justifyContent:"space-evenly"}}>
                   <Box
                     sx={{
                       background: "white",
@@ -63,7 +64,7 @@ function Aims() {
                       borderRadius: "50%",
                       border: "4px solid plum",
                       p: "2px 0",
-                      mb: 2,
+                      
                 
                     }}
                   >

@@ -18,12 +18,13 @@ import {
   //Autocomplete,
   //Link
 } from "@mui/material";
-import {styled} from "@mui/material";
+import { styled } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
 import SearchIcon from "@mui/icons-material/Search";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonIcon from "@mui/icons-material/Person";
 import DarkModeIcon from "@mui/icons-material/DarkMode"; //styled components
+import { Link } from "react-router-dom";
 const StyledToolbar = styled(Toolbar)({
   background: "#5FE88D",
   display: "flex",
@@ -36,35 +37,13 @@ const LogoTypography = styled(Typography)({
   fontWeight: 600,
 });
 
-const Search = styled(Box)({
-  background: "white",
-  width: "45%",
-  display: "flex",
-  gap: 3,
-  borderRadius: 8,
-  padding: 7,
-});
 
-const StyledStack = styled(Stack)(({ theme }) => ({
-  display: "none",
-  [theme.breakpoints.up("sm")]: {
-    display: "flex",
-  },
-}));
-
-const StyledTooltip = styled(Tooltip)(({ theme }) => ({
-  display: "block",
-  [theme.breakpoints.up("sm")]: {
-    display: "none",
-  },
-}));
-
-const LoginBox = styled(Box)(({theme})=>({
+const LoginBox = styled(Box)(({ theme }) => ({
   width: "90%",
   [theme.breakpoints.up("sm")]: {
-    width: "50%"
-  }
-}))
+    width: "50%",
+  },
+}));
 function Navbar() {
   const [rightmenu, setRightmenu] = React.useState(false);
   ///handle closing of rightmenu
@@ -86,13 +65,12 @@ function Navbar() {
     p: 4,
   };
 
-
-
   return (
-  
-      <AppBar sx={{ position: "sticky", width: "100%" }}>
+    <Box>
+      <AppBar sx={{ width: "100%", background: "#5FE88D" }}>
         <CssBaseline />
         <StyledToolbar>
+          <Link to="/" style={{textDecoration:"none",color:"white"}}>
           <LogoTypography
             variant="h5"
             component="a"
@@ -101,38 +79,18 @@ function Navbar() {
             College Buddy
           </LogoTypography>
 
-          <Search>
-            <SearchIcon sx={{ color: "skyblue", fontSize: 30 }} />
-            <InputBase
-              size="small"
-              placeholder="navigate various part of page"
-              fullWidth
-            />
-          </Search>
+          </Link>
 
-          <StyledStack direction="row" spacing={2} >
-            <Tooltip title="Change Theme">
-              <IconButton
-                sx={{ color: "plum", bgcolor: "rgb(225,225,225,0.6)" }}
-              >
-                <CircleIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Night/Day">
-              <IconButton sx={{ bgcolor: "rgb(225,225,225,0.6)" }}>
-                <DarkModeIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="profile/login">
-              <IconButton
-                onClick={handleClose}
-                sx={{ bgcolor: "rgb(225,225,225,0.6)", color: "palevioletred" }}
-              >
-                <PersonIcon />
-              </IconButton>
-            </Tooltip>
-          </StyledStack>
-          <StyledTooltip title="profile/login">
+          <Tooltip title="profile/login">
+            <IconButton
+              onClick={handleClose}
+              sx={{ bgcolor: "rgb(225,225,225,0.6)", color: "palevioletred" }}
+            >
+              <PersonIcon />
+            </IconButton>
+          </Tooltip>
+          {/**
+           *           <StyledTooltip title="profile/login">
             <IconButton
               onClick={handleClose}
               sx={{ bgcolor: "rgb(225,225,225,0.6)", color: "palevioletred" }}
@@ -140,6 +98,8 @@ function Navbar() {
               <PersonIcon />
             </IconButton>
           </StyledTooltip>
+
+           */}
 
           <Menu
             id="demo-positioned-menu"
@@ -155,27 +115,30 @@ function Navbar() {
               horizontal: "right",
             }}
           >
-            <MenuItem onClick={handleOpen} sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <MenuItem
+              onClick={handleOpen}
+              sx={{ display: "flex", alignItems: "center", gap: 2 }}
+            >
               <LoginIcon />
 
-              <Button >Login</Button>
+              <Button>Login</Button>
             </MenuItem>
           </Menu>
-
-          <div>
-            <Modal
-              open={open}
-              onClose={modalHandleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <LoginBox sx={style}>
-                <Login/>
-              </LoginBox>
-            </Modal>
-          </div>
         </StyledToolbar>
       </AppBar>
+      <div>
+        <Modal
+          open={open}
+          onClose={modalHandleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <LoginBox sx={style}>
+            <Login />
+          </LoginBox>
+        </Modal>
+      </div>
+    </Box>
   );
 }
 

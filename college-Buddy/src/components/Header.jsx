@@ -12,7 +12,7 @@ function srcset(image, size, rows = 1, cols = 1) {
 
 function Header() {
   return (
-    <Box>
+    <Box sx={{mt:"3rem"}}>
       <ImageList
         sx={{ width: "100%", height: "100%" }}
         variant="quilted"

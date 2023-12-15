@@ -1,5 +1,4 @@
 import React from "react";
-import { Menu } from "@mui/icons-material";
 
 import {
   AppBar,
@@ -48,7 +47,7 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  alignItems:"center",
+  alignItems: "center",
   [theme.breakpoints.up("sm")]: {
     display: "none",
   },
@@ -59,34 +58,17 @@ function Navbar2(props) {
     <AppBar sx={{ position: "sticky", width: "100%" }}>
       <CssBaseline />
       <StyledToolbar>
-        <LogoTypography
-          variant="h5"
-          component="a"
-          sx={{ fontSize: { xs: 20 } }}
-        >
-          College Buddy
-        </LogoTypography>
-
-        <Search>
-          <SearchIcon sx={{ color: "skyblue", fontSize: 30 }} />
-          <InputBase
-            size="small"
-            placeholder="navigate various part of page"
-            fullWidth
-          />
-        </Search>
+        <Link to="/" style={{textDecoration:"none",color:"white"}}>
+          <LogoTypography
+            variant="h5"
+            component="a"
+            sx={{ fontSize: { xs: 20 } }}
+          >
+            College Buddy
+          </LogoTypography>
+        </Link>
 
         <StyledStack direction="row" spacing={2}>
-          <Tooltip title="Change Theme">
-            <IconButton sx={{ color: "plum", bgcolor: "rgb(225,225,225,0.6)" }}>
-              <CircleIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Night/Day">
-            <IconButton sx={{ bgcolor: "rgb(225,225,225,0.6)" }}>
-              <DarkModeIcon />
-            </IconButton>
-          </Tooltip>
           <Tooltip title="profile/login">
             <Link to="/profile">
               <IconButton
@@ -117,7 +99,6 @@ function Navbar2(props) {
           </Tooltip>
         </StyledBox>
       </StyledToolbar>
-
     </AppBar>
   );
 }

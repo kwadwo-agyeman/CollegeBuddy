@@ -3,7 +3,7 @@ import Bio from "./Bio";
 import Education from "./Education";
 function PersonalInfo() {
   return (
-    <div>
+    <div >
         <Bio/>
         <br /><br />
         <Education/>

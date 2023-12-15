@@ -16,8 +16,9 @@ function CertsNAwards() {
         sx={{
           backdropFilter: "blur(8px)",
           backgroundColor: "rgb(125, 125, 255,0.3)",
-          height:{xs: "fit-content", sm:"23rem"},
+          height:{xs: "fit-content", sm:"25rem"},
           overflow: "auto",
+          "&:hover":{boxShadow:"5px 5px 1rem rgb(0,0,0,0.3)"} 
         }}
       >
         <Box>
@@ -27,7 +28,7 @@ function CertsNAwards() {
         />
         </Box>
         <CardContent>
-          <Typography sx={{ fontWeight: 500 }}>
+          <Typography sx={{ fontWeight: 500, color:"white" }}>
             Certificates and Awards
           </Typography>
           <input

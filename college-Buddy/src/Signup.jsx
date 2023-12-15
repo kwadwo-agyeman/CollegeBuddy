@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import SignUpImg from './assets/signUpBg.jpg'
 import {
   Box,
   Card,
@@ -34,8 +34,9 @@ setFormData((prevFormData)=>(
     <Box
       sx={{
         background:
-          "linear-gradient(145deg, rgba(0,0,0,0.3), rgb(59, 126, 152,0.7)), url(https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=600) center/cover no-repeat",
-        height: "130vh",
+          `linear-gradient(145deg, rgba(0,0,0,0.3), rgb(59, 126, 152,0.7)), url(${SignUpImg}) center/cover no-repeat`,
+        padding:"5rem 0"
+        
       }}
     >
       <Navbar />

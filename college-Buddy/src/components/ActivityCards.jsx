@@ -88,7 +88,7 @@ console.log(files.length)
       <Grid container spacing={2}>
         {props.cardArr.map((_, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{}}>
               <CardContent
                 sx={{
                   backgroundColor:

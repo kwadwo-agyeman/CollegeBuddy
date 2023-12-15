@@ -30,7 +30,7 @@ function Login() {
   },[correctLogins])
   const navToProfile = () => {
     if (username === "CollegeBud23" && password === "2023@college") {
-      setLogins("/activitiesPage");
+      setLogins("/profile");
     } else {
       console.log("wrong logins");
     }

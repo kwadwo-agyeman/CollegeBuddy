@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import ActivityCards from "./components/ActivityCards";
 import { Stack } from "@mui/material";
 
-function Profile() {
+function Profile(props) {
   const [cardArr, setCardArr] = React.useState([]);
   const [cardDetails, setCardDetails] = React.useState([
     { title: "", description: "" },
@@ -156,7 +156,7 @@ function Profile() {
 
   return (
     <div>
-      <Navbar2 />
+      <Navbar2 profPic={ props.selectedFile}/>
       <Stack direction="row" spacing={{xs: 1.4, sm: 2}}>
         <Sidebar addCard={addCard} />
         <ActivityCards

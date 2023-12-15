@@ -4,53 +4,85 @@ import PersonalInfo from "./components/PersonalInfo";
 import PersonalInfo2 from "./components/PersonalInfo2";
 import Navbar2 from "./components/Navbar2";
 import Footer from "./components/Footer";
-import profileImg from "../src/assets/profile-img.jpg";
+import profileHead from "./assets/profileHead.jpg";
+import profileImg from "./assets/profileImg.jpg"
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import { Avatar, Box, Container, IconButton, Tooltip } from "@mui/material";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import {
+  Avatar,
+  Box,
+  Container,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
-function Profile() {
-  const [fileInput, setFileInput] = useState(null);
-const [selectedFile,setSelectedFile]= useState(null)
-console.log(selectedFile)
-  const handleProfPic = () => {
-    if (fileInput) {
-      fileInput.click(); 
-    }
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = ()=>{
-        setSelectedFile(URL.createObjectURL(file))
-    }
-    reader.readAsDataURL(file)
-  };
-
+function Profile(props) {
+  
   return (
-    <div>
-      <Navbar2 profPic={selectedFile} />
-      <div style={{ position: "relative" }}>
-        <div>
-          <img
-            src={profileImg}
-            alt="profile-bg pic"
-            style={{ width: "100%", height: "15vh" }}
-          />
-        </div>
+    <div style={{ backgroundImage: `url(${profileImg})` }}>
+      <Navbar2 profPic={props.selectedFile} />
+      <div style={{ }}>
         <div
           style={{
-            backgroundColor: "#FFE381",
-            marginTop: "-0.8rem",
+            background: `url(${profileHead}) center/cover no-repeat`,
+            marginTop: "0rem",
             padding: "1rem",
-            height: "15vh",
+            height: "18vh",
+            boxShadow: "5px 5px 8px rgb(0,0,0,0.3)",
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"space-between",
           }}
         >
-          <p style={{ marginTop: "2rem" }}></p>
-        </div>
-        <div style={{ position: "absolute", top: "10vh", left: "5vw" }}>
-          <div style={{ position: "relative" }}>
+          <div style={{position: "relative",  }}>
             <Avatar
+              alt="Remy Sharp"
+              src={props.selectedFile}
+              sx={{
+                width: { xs: 120, sm: 120, md: 80 },
+                height: { xs: 120, sm: 120, md: 80 },
+                border: "0.8rem solid rgb(128,0,128,0.8)",
+                
+              }}
+            />
+            <Tooltip
+              sx={{ position: "absolute",bottom:-2,right:-1 }}
+              title="Add Profile Pic"
+              onClick={props.handleProfPic}
+            >
+              <IconButton>
+                <AddAPhotoIcon sx={{ fontSize: "25px", color: "white" }} />
+              </IconButton>
+            </Tooltip>
+          </div>
+          <Link to="/activitiesPage" style={{ textDecoration: "none" }}>
+            <Box
+              sx={{
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "end",
+                mt: 2.5,
+                color: "white",
+                "&:hover": { textDecoration: "underline" },
+              }}
+            >
+              <Typography variant="h6">Activities</Typography>
+              <KeyboardArrowRightIcon />
+            </Box>
+          </Link>
+        </div>
+        <div
+          style={
+            {
+              /*position: "absolute", top: "10vh", left: "5vw" */
+            }
+          }
+        >
+          <div style={{ position: "relative" }}>
+            {/**            <Avatar
               alt="Remy Sharp"
               src={selectedFile}
               sx={{
@@ -59,19 +91,21 @@ console.log(selectedFile)
                 border: "0.8rem solid rgb(128,0,128,0.8)",
               }}
             />
+ */}
             <div style={{ position: "absolute", top: "60%", right: "0%" }}>
-              <Tooltip title="Add Profile Pic" onClick={handleProfPic}>
+              {/******              <Tooltip title="Add Profile Pic" onClick={handleProfPic}>
                 <IconButton>
                   <AddAPhotoIcon sx={{ fontSize: "25px", color: "white" }} />
                 </IconButton>
               </Tooltip>
+ */}
               {/* Hidden file input */}
               <input
-                ref={(input) => setFileInput(input)}
+                ref={(input) => props.setFileInput(input)}
                 type="file"
                 accept="image/*"
                 style={{ display: "none" }}
-                onChange={handleFileChange}
+                onChange={props.handleFileChange}
               />
             </div>
           </div>
@@ -83,21 +117,21 @@ console.log(selectedFile)
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              sm: "1fr 2fr",
+              sm: "1fr",
               md: "30% 40% 22%",
             },
             gap: "2rem",
           }}
         >
-          <div style={{ backgroundColor: "" }}>
+          <Box style={{}}>
             <PersonalInfo2 />
-          </div>
-          <div style={{ backgroundColor: "" }}>
+          </Box>
+          <Box sx={{ backgroundColor: "" }}>
             <CertsNAwards />
-          </div>
-          <div style={{ backgroundColor: "" }}>
+          </Box>
+          <Box style={{ backgroundColor: "" }}>
             <PersonalInfo />
-          </div>
+          </Box>
         </Box>
       </Container>
       <Footer />

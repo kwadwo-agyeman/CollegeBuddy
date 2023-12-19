@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import liveBg from '../assets/livebg.jpg'
 
 function LiveLetter() {
   const [letters, setLetters] = useState("");
@@ -20,13 +21,18 @@ function LiveLetter() {
     return () => clearInterval(writeLettersInterval);
   }, []);
   const styles = {
-    background: "white",
+    //background: `linear-gradient(345deg,rgba(0,0,0,0.2),rgb(0,0,0,0.2)), url(${liveBg}) no-repeat`,
+    background:"white",
+    backgroundSize:"cover",
+    backgroundFilter:"8px",
     height: "30vh",
     width:{xs:"85vw",sm:"40vw"},
     borderRadius: "10px",
     padding: "20px",
+    color:"black",
+    fontWeight:500,
     border: "2px solid rgb(0,0,0,0.6)",
-    boxShadow: "2px 2px 2rem rgb(0,0,0,)",
+    boxShadow: "15px 16px 2rem rgb(0,0,0)",
   };
   return <Box sx={styles}>{letters}</Box>;
 }

@@ -39,7 +39,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "80%",
+  width: {xs:"96%",sm:"80%"},
   boxShadow: 24,
   p: 4,
   height: "80%",
@@ -55,11 +55,15 @@ function ActivityCards(props) {
     props.cardArr.map(() => [])
   );
   //Image files length
-  const [imageLength,setImageLength] = useState(0)
+  const [imageLength,setImageLength] = useState(props.cardArr.map(()=>0))
   //handle image selection
   const handleImageChange = (e, index) => {
     const files = e.target.files;
-    setImageLength(files.length)
+    setImageLength((prevLength)=>{
+      const updatedLength = [...prevLength];
+      updatedLength[index] = files.length;
+      return updatedLength
+    })
 console.log(files.length)
     if (files.length > 0) {
       const newImages = Array.from(files).map((file) => ({
@@ -367,8 +371,9 @@ console.log(files.length)
                   </div>
                   {/**  IMAGES ** */}
                   <div className="activity--form--image">
+                    <Typography variant="h5" sx={{mb:3,fontWeight:400}}>Add Images Of Your Activity</Typography>
                     <Box sx={{ display: "flex", alignItems: "center" }}>
-                      <Badge badgeContent={imageLength} color="error">
+                      <Badge badgeContent={imageLength[index]} color="error">
                         <AddAPhotoIcon color="secondary" />
                       </Badge>
                       <input

@@ -1,4 +1,5 @@
 import { Box, ImageList, ImageListItem } from "@mui/material";
+import LiveLetter from "./LiveLetter";
 import React from "react";
 
 function srcset(image, size, rows = 1, cols = 1) {
@@ -12,14 +13,17 @@ function srcset(image, size, rows = 1, cols = 1) {
 
 function Header() {
   return (
-    <Box sx={{mt:"3rem"}}>
+    <Box sx={{ mt: "3rem", position: "relative" }}>
+      <Box sx={{ position: "absolute", left: {xs:"7.5%",sm:"30%"}, top: "30%", zIndex: 444}}>
+        <LiveLetter />
+      </Box>
       <ImageList
         sx={{ width: "100%", height: "100%" }}
         variant="quilted"
         cols={4}
         rowHeight={120}
       >
-        {imageList.map((item,index) => (
+        {imageList.map((item, index) => (
           <ImageListItem
             key={index}
             cols={item.cols || 1}
